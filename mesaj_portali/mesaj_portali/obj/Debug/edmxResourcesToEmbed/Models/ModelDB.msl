@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database1Model1StoreContainer" CdmEntityContainer="Database1Entities1">
+    <EntitySetMapping Name="Mesaj">
+      <EntityTypeMapping TypeName="Database1Model1.Mesaj">
+        <MappingFragment StoreEntitySet="Mesaj">
+          <ScalarProperty Name="mesajId" ColumnName="mesajId" />
+          <ScalarProperty Name="gonderenId" ColumnName="gonderenId" />
+          <ScalarProperty Name="aliciId" ColumnName="aliciId" />
+          <ScalarProperty Name="mesajText" ColumnName="mesajText" />
+          <ScalarProperty Name="mesajTarih" ColumnName="mesajTarih" />
+          <ScalarProperty Name="mesajSohbetId" ColumnName="mesajSohbetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sohbet">
+      <EntityTypeMapping TypeName="Database1Model1.Sohbet">
+        <MappingFragment StoreEntitySet="Sohbet">
+          <ScalarProperty Name="sohbetId" ColumnName="sohbetId" />
+          <ScalarProperty Name="sohbetAdi" ColumnName="sohbetAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uye">
+      <EntityTypeMapping TypeName="Database1Model1.Uye">
+        <MappingFragment StoreEntitySet="Uye">
+          <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+          <ScalarProperty Name="uyeAdSoyad" ColumnName="uyeAdSoyad" />
+          <ScalarProperty Name="uyeSifre" ColumnName="uyeSifre" />
+          <ScalarProperty Name="uyeMail" ColumnName="uyeMail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UyeSohbet">
+      <EntityTypeMapping TypeName="Database1Model1.UyeSohbet">
+        <MappingFragment StoreEntitySet="UyeSohbet">
+          <ScalarProperty Name="sohbetById" ColumnName="sohbetById" />
+          <ScalarProperty Name="uyeById" ColumnName="uyeById" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

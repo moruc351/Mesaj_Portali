@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Mesaj">
+    <Key>
+      <PropertyRef Name="mesajId" />
+    </Key>
+    <Property Name="mesajId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gonderenId" Type="int" Nullable="false" />
+    <Property Name="aliciId" Type="int" Nullable="false" />
+    <Property Name="mesajText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="mesajTarih" Type="date" Nullable="false" />
+    <Property Name="mesajSohbetId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sohbet">
+    <Key>
+      <PropertyRef Name="sohbetId" />
+    </Key>
+    <Property Name="sohbetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sohbetAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Uye">
+    <Key>
+      <PropertyRef Name="uyeId" />
+    </Key>
+    <Property Name="uyeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uyeAdSoyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="uyeSifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="uyeMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UyeSohbet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="sohbetById" Type="int" Nullable="false" />
+    <Property Name="uyeById" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Mesaj_ToAlici">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="1" />
+    <End Role="Mesaj" Type="Self.Mesaj" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="uyeId" />
+      </Principal>
+      <Dependent Role="Mesaj">
+        <PropertyRef Name="aliciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mesaj_ToGonderici">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="1" />
+    <End Role="Mesaj" Type="Self.Mesaj" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="uyeId" />
+      </Principal>
+      <Dependent Role="Mesaj">
+        <PropertyRef Name="gonderenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mesaj_ToMesajSohbetId">
+    <End Role="Sohbet" Type="Self.Sohbet" Multiplicity="1" />
+    <End Role="Mesaj" Type="Self.Mesaj" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sohbet">
+        <PropertyRef Name="sohbetId" />
+      </Principal>
+      <Dependent Role="Mesaj">
+        <PropertyRef Name="mesajSohbetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UyeSohbet_sohbet">
+    <End Role="Sohbet" Type="Self.Sohbet" Multiplicity="1" />
+    <End Role="UyeSohbet" Type="Self.UyeSohbet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sohbet">
+        <PropertyRef Name="sohbetId" />
+      </Principal>
+      <Dependent Role="UyeSohbet">
+        <PropertyRef Name="sohbetById" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UyeSohbet_uye">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="1" />
+    <End Role="UyeSohbet" Type="Self.UyeSohbet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="uyeId" />
+      </Principal>
+      <Dependent Role="UyeSohbet">
+        <PropertyRef Name="uyeById" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Database1Model1StoreContainer">
+    <EntitySet Name="Mesaj" EntityType="Self.Mesaj" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sohbet" EntityType="Self.Sohbet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Uye" EntityType="Self.Uye" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UyeSohbet" EntityType="Self.UyeSohbet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Mesaj_ToAlici" Association="Self.FK_Mesaj_ToAlici">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="Mesaj" EntitySet="Mesaj" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mesaj_ToGonderici" Association="Self.FK_Mesaj_ToGonderici">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="Mesaj" EntitySet="Mesaj" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mesaj_ToMesajSohbetId" Association="Self.FK_Mesaj_ToMesajSohbetId">
+      <End Role="Sohbet" EntitySet="Sohbet" />
+      <End Role="Mesaj" EntitySet="Mesaj" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UyeSohbet_sohbet" Association="Self.FK_UyeSohbet_sohbet">
+      <End Role="Sohbet" EntitySet="Sohbet" />
+      <End Role="UyeSohbet" EntitySet="UyeSohbet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UyeSohbet_uye" Association="Self.FK_UyeSohbet_uye">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="UyeSohbet" EntitySet="UyeSohbet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

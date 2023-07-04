@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d5681c93f6d84355b563620822129abc" Name="Diagram1">
+        <EntityTypeShape EntityType="Database1Model1.Mesaj" Width="1.5" PointX="5.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model1.Sohbet" Width="1.5" PointX="2.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model1.Uye" Width="1.5" PointX="0.875" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model1.UyeSohbet" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="Database1Model1.FK_Mesaj_ToAlici" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model1.FK_Mesaj_ToGonderici" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model1.FK_Mesaj_ToMesajSohbetId" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model1.FK_UyeSohbet_sohbet" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model1.FK_UyeSohbet_uye" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
